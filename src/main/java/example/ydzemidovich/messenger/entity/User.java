@@ -37,7 +37,4 @@ public class User {
     private String lastName;
     @Column
     private boolean isBlocked = false;
-    @Column
-    @NotNull
-    private String salt;
 }
