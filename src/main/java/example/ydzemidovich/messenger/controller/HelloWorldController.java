@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 
+import static example.ydzemidovich.messenger.Constants.API_VERSION;
+
 /**
  * Example of a REST controller in Spring Boot
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(API_VERSION)
 @RequiredArgsConstructor
 public class HelloWorldController {
 
