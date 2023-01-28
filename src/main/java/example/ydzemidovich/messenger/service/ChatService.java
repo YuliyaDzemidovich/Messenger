@@ -2,6 +2,7 @@ package example.ydzemidovich.messenger.service;
 
 import example.ydzemidovich.messenger.dto.ChatDto;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ public interface ChatService {
 
     /**
      * Get chats of current user.
+     * @param principal authenticated user
      * @return list of user chats
      */
-    List<ChatDto> getUserChats();
+    List<ChatDto> getUserChats(Principal principal);
 }

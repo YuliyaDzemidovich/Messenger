@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.List;
 
 import static example.ydzemidovich.messenger.Constants.API_VERSION;
@@ -27,7 +28,7 @@ public class ChatController {
      * @return list of chat for current user
      */
     @GetMapping(value = "/self", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ChatDto> getUserChats() {
-        return chatService.getUserChats();
+    public List<ChatDto> getUserChats(Principal principal) {
+        return chatService.getUserChats(principal);
     }
 }

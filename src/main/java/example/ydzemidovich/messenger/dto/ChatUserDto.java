@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ChatUserDto {
-    private Long chatId;
+    private Long userId;
     private String firstName;
     private String lastName;
 }

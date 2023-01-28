@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -31,5 +33,12 @@ class ChatRepoTest {
         assertNotNull(fetchedChat.getId());
         assertEquals(newChat.getName(), fetchedChat.getName());
         assertEquals(newChat.getCreatorId(), fetchedChat.getCreatorId());
+    }
+
+    @Test
+    void findByUsers_UserName() {
+        List<Chat> userChats = chatRepo.findByUsers_Login("johnD");
+        assertNotNull(userChats);
+        assertTrue(userChats.size() > 0);
     }
 }
