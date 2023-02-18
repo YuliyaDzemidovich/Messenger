@@ -17,7 +17,7 @@ var colors = [
 ];
 
 function connect(event) {
-    username = document.querySelector('#name').value.trim();
+    username = getCookie("username") || "somebody";
 
     if(username) {
         usernamePage.classList.add('hidden');
@@ -31,6 +31,28 @@ function connect(event) {
     event.preventDefault();
 }
 
+function getCookie(cookieName) {
+    var name = cookieName + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if ((c.indexOf(name)) === 0) {
+            return c.substr(name.length);
+        }
+
+    }
+    return null;
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
 
 function onConnected() {
     // Subscribe to the Public Topic
